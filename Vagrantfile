@@ -7,7 +7,8 @@ Vagrant.configure("2") do |config|
   config.vm.define "Pioneer Dev"
 
   # Name of box to install with
-  config.vm.box = "windows_10_hyperv"
+  config.vm.box = "gusztavvargadr/w10e-vs17c"
+  config.vm.box_version = "0.8.0"
   # config.vm.box = "windows_10_virtualbox"
   # config.vm.box = "windows_10_vmware"
   
@@ -64,7 +65,7 @@ Vagrant.configure("2") do |config|
     v.vmx["ethernet0.virtualDev"] = "vmxnet3"
     v.vmx["RemoteDisplay.vnc.enabled"] = "false"
     v.vmx["RemoteDisplay.vnc.port"] = "5900"
-    v.vmx["scsi0.virtualDev"] = "lsisas1068"s
+    v.vmx["scsi0.virtualDev"] = "lsisas1068"
   end
 
   # Execute Provision
@@ -85,4 +86,4 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell" do |s|
     s.path = "scripts/install-vscode-extensions.ps1"
   end
-end 
+end
